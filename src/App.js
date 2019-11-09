@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import logo from './assets/logo.png';
 import './App.css';
 
-import Form from './components/Form'
+import { Form} from './components';
 import formData from './data'
+import FormContext, { reducer, initialState } from './common/formContext';
 
-function App() {
+const App = () => {
+    const [ state, dispatch ] = useReducer(reducer, initialState)
+
     return (
-        <main className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-            </header>
-            <section className="App-content">
-                <Form {...formData} />
-            </section>
-        </main>
+        <FormContext.Provider value={{state, dispatch}}>
+            <main className="App">
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                </header>
+                <section className="App-content">
+                    <Form {...formData} />
+                </section>
+            </main>
+        </FormContext.Provider>
     );
 }
 
