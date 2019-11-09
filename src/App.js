@@ -1,20 +1,18 @@
 import React from 'react';
 import logo from './assets/logo.png';
 import './App.css';
-import i18n from './common/i18n';
 
+import Form from './components/Form'
 import formData from './data'
 
 function App() {
     return (
         <main className="App">
-            <section>
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        {i18n.REACTOR}
-                    </p>
-                </header>
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+            </header>
+            <section className="App-content">
+                <Form {...formData} />
             </section>
         </main>
     );
