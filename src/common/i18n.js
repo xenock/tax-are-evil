@@ -1,3 +1,3 @@
 export default {
-    REACTOR: 'I hate taxes'
+    EMPTY: 'We have no data to show you'
 }

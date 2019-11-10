@@ -1,6 +1,7 @@
 import React, { useContext, useReducer } from 'react';
 import { InputField } from '..';
 import FormContext, { ACTIONS, initialFormValues, formReducer } from '../../common/formContext'
+import { Link } from 'react-router-dom'
 
 const handleSubmit = dispatch => formValues => e => {
     e.preventDefault();
@@ -21,9 +22,12 @@ export default ({inputFields}) => {
     }
 
     return (
-        <form className="App-form" {...formProps}>
-            {inputFields.map(field => <InputField key={field.id} {...field} />)}
-            <input type="submit" value="Submit" />
-        </form>
+        <>
+            <form className="App-form" {...formProps}>
+                {inputFields.map(field => <InputField key={field.id} {...field} />)}
+                <input type="submit" value="Submit" />
+            </form>
+            <Link to="/submissions">Amonooooo</Link>
+        </>
     )
 }
