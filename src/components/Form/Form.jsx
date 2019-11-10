@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useReducer } from 'react';
 import { InputField } from '..';
-import FormContext, { ACTIONS } from '../../common/formContext'
+import FormContext, { ACTIONS, initialFormValues, formReducer } from '../../common/formContext'
 
-const handleSubmit = e => {
+const handleSubmit = dispatch => formValues => e => {
     e.preventDefault();
+    dispatch({type: ACTIONS.submit, payload: formValues})
 }
 
 const handleChange = dispatch => argo => {
@@ -12,10 +13,15 @@ const handleChange = dispatch => argo => {
 
 export default ({inputFields}) => {
     const { state, dispatch } = useContext(FormContext)
-    console.log('state', state)
+    const [ formValues, setFormValues ] = useReducer(formReducer, initialFormValues)
+
+    const formProps = {
+        onSubmit: handleSubmit(dispatch)(formValues),
+        onChange: handleChange(setFormValues)
+    }
 
     return (
-        <form className="App-form" onSubmit={handleSubmit} onChange={handleChange(dispatch)}>
+        <form className="App-form" {...formProps}>
             {inputFields.map(field => <InputField key={field.id} {...field} />)}
             <input type="submit" value="Submit" />
         </form>

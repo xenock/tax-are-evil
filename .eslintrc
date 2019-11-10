@@ -1,5 +1,9 @@
 {
     "extends": "airbnb",
+    "plugins": [
+        "react",
+        "react-native"
+    ],
     "parser": "babel-eslint",
     "env": {
         "jest": true
@@ -25,15 +29,6 @@
             "allow": ["__REDUX_DEVTOOLS_EXTENSION__"]
         }]
     },
-    "settings": {
-        "import/resolver": {
-            "babel-module": {}
-        }
-    },
-    "extends": [
-        "plugin:import/errors",
-        "plugin:import/warnings"
-    ],
     "settings": {
         "import/resolver": {
             "babel-module": {}

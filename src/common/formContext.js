@@ -1,16 +1,35 @@
 import React from 'react';
 import data from '../data'
 
-export const initialState = data.inputFields.reduce((acc, field) => {
+export const initialState = {
+    submissions: []
+}
+
+export const initialFormValues = data.inputFields.reduce((acc, field) => {
     acc[field.id] = ''
     return acc
 }, {})
 
 export const ACTIONS = {
+    submit: 'submit',
     update: 'update'
 }
 
-export const reducer = (state, action) => {
+export const globalReducer = (state, action) => {
+    switch (action.type) {
+        case 'submit':
+            return {
+                submissions: [
+                    ...state.submissions,
+                    action.payload
+                ]
+            };
+        default:
+            return state;
+    }
+}
+
+export const formReducer = (state, action) => {
     switch (action.type) {
         case 'update':
             return {

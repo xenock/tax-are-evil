@@ -1,16 +1,20 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useMemo } from 'react';
 import logo from './assets/logo.png';
 import './App.css';
 
-import { Form} from './components';
+import { Form } from './components';
 import formData from './data'
-import FormContext, { reducer, initialState } from './common/formContext';
+import FormContext, { globalReducer, initialState } from './common/formContext';
 
 const App = () => {
-    const [ state, dispatch ] = useReducer(reducer, initialState)
+    const [ state, dispatch ] = useReducer(globalReducer, initialState)
+
+    const contextValue = useMemo(() => {
+        return { state, dispatch };
+    }, [state, dispatch]);
 
     return (
-        <FormContext.Provider value={{state, dispatch}}>
+        <FormContext.Provider value={contextValue}>
             <main className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />

@@ -1,5 +1,5 @@
-import Form from './Form/Form'
-import InputField from './InputField/InputField'
+import Form from './Form'
+import InputField from './InputField'
 
 export {
     Form,
