@@ -5,10 +5,14 @@ export const initialState = {
   submissions: [],
 };
 
-export const initialFormValues = data.inputFields.reduce((acc, field) => {
-  acc[field.id] = '';
-  return acc;
-}, {});
+export const extractFormFields = (data) => (
+    data.inputFields.reduce((acc, field) => {
+      acc[field.id] = '';
+      return acc;
+    }, {})
+)
+
+export const initialFormValues = extractFormFields(data);
 
 export const ACTIONS = {
   submit: 'submit',
