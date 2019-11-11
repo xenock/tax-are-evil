@@ -1,7 +1,8 @@
 import React, { useContext, useReducer } from 'react';
+import { array } from 'prop-types';
 import { InputField } from '..';
 import FormContext, { ACTIONS, initialFormValues, formReducer } from '../../common/formContext'
-import { Link } from 'react-router-dom'
+import style from './Form.module.scss'
 
 const handleSubmit = dispatch => formValues => e => {
     e.preventDefault();
@@ -12,8 +13,8 @@ const handleChange = dispatch => argo => {
     dispatch({type: ACTIONS.update, payload: { [argo.target.name]: argo.target.value}})
 }
 
-export default ({inputFields}) => {
-    const { state, dispatch } = useContext(FormContext)
+const Form = ({inputFields}) => {
+    const { dispatch } = useContext(FormContext)
     const [ formValues, setFormValues ] = useReducer(formReducer, initialFormValues)
 
     const formProps = {
@@ -23,11 +24,21 @@ export default ({inputFields}) => {
 
     return (
         <>
-            <form className="App-form" {...formProps}>
+            <form className={style.form} {...formProps}>
                 {inputFields.map(field => <InputField key={field.id} {...field} />)}
-                <input type="submit" value="Submit" />
+                <input className={style.submit} type="submit" value="Submit" />
             </form>
-            <Link to="/submissions">Amonooooo</Link>
         </>
     )
+
 }
+
+Form.propTypes = {
+    inputFields: array
+};
+
+Form.defaultProps = {
+    inputFields: []
+}
+
+export default Form;
