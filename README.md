@@ -1,3 +1,21 @@
+TAXDOWN frontend programming test.
+
+Pending "nice to have" things that I used to work:
+
+- [Husky](https://www.npmjs.com/package/husky)
+- [Commitizen](https://www.npmjs.com/package/commitizen)
+- [Semantic Versioning](https://semver.org/)
+
+- Mocks
+- Fixtures
+
+- [Stylelint](https://stylelint.io/)
+
+- Custom webpack
+- Module alias
+
+===
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
